@@ -6,48 +6,36 @@ using UnityEngine.Events;
 
 public class MovementManager : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public MovementData Data;
-    private Vector2 _groundCheckPos; // Tambahkan inisialisasi posisi
-    private Vector2 _groundCheckSize; // Tambahkan inisialisasi ukuran
+    public ObjectData Object;
     private float lastOnGroundTime; // Tambahkan variabel ini jika diperlukan
+    private Vector2 groundCheckPos;
 
     private void Update()
     {
-        if (Physics2D.OverlapBox(_groundCheckPos, _groundCheckSize, 0, Data.groundLayer))
+        groundCheckPos = new Vector2(Object.col.bounds.center.x, Object.col.bounds.min.y);
+
+        if (Physics2D.OverlapBox(groundCheckPos, Object.Data.groundCheckSize, 0, Object.Data.groundLayer))
         {
-            lastOnGroundTime = Data.coyoteTime; // Perbaiki penulisan variabel
+            lastOnGroundTime = Object.Data.coyoteTime; // Perbaiki penulisan variabel
         }
+
+        if (lastOnGroundTime > 0f)
+        {
+            lastOnGroundTime -= Time.deltaTime;
+        }
+
+        Debug.Log(lastOnGroundTime);
     }
 
     private void FixedUpdate()
     {
-        // Mengambil input gerakan dari kelas Input
-        Vector2 moveInput = Input.Move;
+        Object.Rb.AddForce(Vector2.right * Object.Data.runMaxSpeed * Input.Move.x);
 
-        // Melakukan gerakan horizontal
-        rb.velocity = new Vector2(moveInput.x * Data.runMaxSpeed, rb.velocity.y);
-
-        // Melakukan lompat jika tombol lompat ditekan dan pemain berada di tanah atau masih dalam Coyote Time
-        if (Input.JumpPressed && (IsGrounded() || Time.time < (Time.fixedTime + Data.coyoteTime)))
+        if(Input.JumpPressed && lastOnGroundTime > 0f)
         {
-            rb.AddForce(Vector2.up * Data.jumpForce, ForceMode2D.Impulse);
-        }
-
-        // Mengubah rigidbody.gravityScale saat jatuh
-        if (rb.velocity.y < 0)
-        {
-            rb.gravityScale = Data.fallGravityScale;
-        }
-        else
-        {
-            rb.gravityScale = 1f; // Kembalikan gravityScale ke nilai default jika tidak sedang jatuh
+            Object.Rb.AddForce(Vector2.up * Object.Data.jumpForce, ForceMode2D.Impulse);
+            lastOnGroundTime = 0f;
         }
     }
 
-    private bool IsGrounded()
-    {
-        // Implementasi logika pengecekan apakah pemain berada di tanah
-        return false; // Misalnya, return hasil pengecekan menggunakan raycast atau overlap sphere
-    }
 }
