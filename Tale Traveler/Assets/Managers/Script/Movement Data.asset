@@ -16,8 +16,9 @@ MonoBehaviour:
   runAccel: 2
   runDecel: 4
   jumpForce: 10
-  gravityScale: 0
-  fallGravityScale: 0
+  gravityScale: 1
+  fallGravityScale: 1
+  fallGravityMult: 2
   coyoteTime: 1
   groundCheckSize: {x: 0.9, y: 0.5}
   groundLayer:
