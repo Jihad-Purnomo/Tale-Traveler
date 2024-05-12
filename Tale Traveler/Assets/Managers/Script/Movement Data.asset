@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Movement Data
   m_EditorClassIdentifier: 
   runMaxSpeed: 10
-  runAccel: 0
-  runDecel: 0
+  runAccel: 2
+  runDecel: 4
   jumpForce: 10
+  gravityScale: 0
   fallGravityScale: 0
   coyoteTime: 1
   groundCheckSize: {x: 0.9, y: 0.5}

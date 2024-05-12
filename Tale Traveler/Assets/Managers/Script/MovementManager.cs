@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class MovementManager : MonoBehaviour
 {
     public ObjectData Object;
-    private float lastOnGroundTime; // Tambahkan variabel ini jika diperlukan
+    private float lastOnGroundTime;
     private Vector2 groundCheckPos;
 
     private void Update()
@@ -16,7 +16,7 @@ public class MovementManager : MonoBehaviour
 
         if (Physics2D.OverlapBox(groundCheckPos, Object.Data.groundCheckSize, 0, Object.Data.groundLayer))
         {
-            lastOnGroundTime = Object.Data.coyoteTime; // Perbaiki penulisan variabel
+            lastOnGroundTime = Object.Data.coyoteTime;
         }
 
         if (lastOnGroundTime > 0f)
@@ -29,13 +29,38 @@ public class MovementManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Object.Rb.AddForce(Vector2.right * Object.Data.runMaxSpeed * Input.Move.x);
+        // Calculate target speed and acceleration rate
+        float targetSpeed = Input.Move.x * Object.Data.runMaxSpeed;
+        float accelRate;
 
-        if(Input.JumpPressed && lastOnGroundTime > 0f)
+        if (lastOnGroundTime > 0)
         {
+            accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? Object.Data.runAccel : Object.Data.runDecel;
+        }
+        else
+        {
+            accelRate = Object.Data.runDecel;
+        }
+
+        // Apply acceleration
+        Object.Rb.AddForce(Vector2.right * targetSpeed * accelRate);
+
+        // Check for jump input
+        if (Input.JumpPressed && lastOnGroundTime > 0f)
+        {
+            // Apply jump force
             Object.Rb.AddForce(Vector2.up * Object.Data.jumpForce, ForceMode2D.Impulse);
             lastOnGroundTime = 0f;
         }
-    }
 
+        // Apply gravity when falling
+        if (Object.Rb.velocity.y < 0)
+        {
+            Object.Rb.gravityScale = Object.Data.fallGravityScale * Object.Data.fallGravityMult;
+        }
+        else
+        {
+            Object.Rb.gravityScale = Object.Data.gravityScale;
+        }
+    }   
 }

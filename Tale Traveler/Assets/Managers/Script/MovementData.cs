@@ -10,7 +10,9 @@ public class MovementData : ScriptableObject
     public float runDecel;
 
     public float jumpForce;
+    public float gravityScale;
     public float fallGravityScale;
+    public float fallGravityMult;
 
     public float coyoteTime;
 
