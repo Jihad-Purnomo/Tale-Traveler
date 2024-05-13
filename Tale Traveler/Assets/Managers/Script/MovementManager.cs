@@ -7,11 +7,33 @@ using UnityEngine.Events;
 public class MovementManager : MonoBehaviour
 {
     public ObjectData Object;
-    private float lastOnGroundTime;
+    public float lastOnGroundTime { get; private set; }
+    public float lastPressedJump { get; private set; }
     private Vector2 groundCheckPos;
+    private MovementState currentState;
+
+    public MovementIdle idleState { get; private set; }
+    public MovementJumping jumpingState { get; private set; }
+    public MovementFalling fallState { get; private set; }
+    public MovementRunning runningState { get; private set; }
+
+    private void Awake()
+    {
+        idleState = new MovementIdle(this);
+        jumpingState = new MovementJumping(this);
+        fallState = new MovementFalling(this);
+        runningState = new MovementRunning(this);
+    }
+
+    private void Start()
+    {
+        currentState = fallState;
+    }
 
     private void Update()
     {
+        currentState.UpdateFrame();
+
         groundCheckPos = new Vector2(Object.col.bounds.center.x, Object.col.bounds.min.y);
 
         if (Physics2D.OverlapBox(groundCheckPos, Object.Data.groundCheckSize, 0, Object.Data.groundLayer))
@@ -19,48 +41,52 @@ public class MovementManager : MonoBehaviour
             lastOnGroundTime = Object.Data.coyoteTime;
         }
 
+        if (Input.JumpPressed)
+        {
+            lastPressedJump = Object.Data.inputBuffer;
+        }
+
         if (lastOnGroundTime > 0f)
         {
             lastOnGroundTime -= Time.deltaTime;
         }
 
-        Debug.Log(lastOnGroundTime);
+        if (lastPressedJump > 0f)
+        {
+            lastPressedJump -= Time.deltaTime;
+        }
     }
 
     private void FixedUpdate()
     {
-        // Calculate target speed and acceleration rate
-        float targetSpeed = Input.Move.x * Object.Data.runMaxSpeed;
-        float accelRate;
-
-        if (lastOnGroundTime > 0)
-        {
-            accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? Object.Data.runAccel : Object.Data.runDecel;
-        }
-        else
-        {
-            accelRate = Object.Data.runDecel;
-        }
-
-        // Apply acceleration
-        Object.Rb.AddForce(Vector2.right * targetSpeed * accelRate);
-
-        // Check for jump input
-        if (Input.JumpPressed && lastOnGroundTime > 0f)
-        {
-            // Apply jump force
-            Object.Rb.AddForce(Vector2.up * Object.Data.jumpForce, ForceMode2D.Impulse);
-            lastOnGroundTime = 0f;
-        }
-
-        // Apply gravity when falling
-        if (Object.Rb.velocity.y < 0)
-        {
-            Object.Rb.gravityScale = Object.Data.fallGravityScale * Object.Data.fallGravityMult;
-        }
-        else
-        {
-            Object.Rb.gravityScale = Object.Data.gravityScale;
-        }
+        currentState.UpdatePhysics();
     }   
+
+    public void ChangeState(MovementState newState)
+    {
+        currentState.ExitState();
+        currentState = newState;
+        currentState.EnterState();
+    }
+
+    public void ResetJumpTime()
+    {
+        lastPressedJump = 0f;
+    }
+
+    public void ResetGroundTime()
+    {
+        lastOnGroundTime = 0f;
+    }
+
+    public void SetGravityScale(float scale)
+    {
+        Object.Rb.gravityScale = scale;
+    }
+
+    public void HorizontalMovement(float targetSpeed, float accelRate)
+    {
+        float speedDif = Input.Move.x * targetSpeed - Object.Rb.velocity.x;
+        Object.Rb.AddForce(Vector2.right * speedDif * accelRate);
+    }
 }

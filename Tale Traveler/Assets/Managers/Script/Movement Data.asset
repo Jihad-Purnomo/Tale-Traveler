@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: Movement Data
   m_EditorClassIdentifier: 
   runMaxSpeed: 10
-  runAccel: 2
-  runDecel: 4
+  runAccel: 5
+  runDecel: 5
+  airMaxSpeed: 5
+  airAccel: 3
+  airDecel: 3
   jumpForce: 10
-  gravityScale: 1
-  fallGravityScale: 1
-  fallGravityMult: 2
+  gravityScale: 1.5
+  fallGravityMult: 3
+  inputBuffer: 1
   coyoteTime: 1
   groundCheckSize: {x: 0.9, y: 0.5}
   groundLayer:
