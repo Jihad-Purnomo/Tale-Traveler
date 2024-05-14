@@ -34,7 +34,7 @@ public class MovementRunning : MovementState
 
         if (movement.lastOnGroundTime <= 0f)
         {
-            movement.ChangeState(movement.fallState);
+            movement.ChangeState(movement.fallingState);
         }
     }
 
@@ -43,6 +43,6 @@ public class MovementRunning : MovementState
         base.UpdatePhysics();
 
 
-        movement.HorizontalMovement(movement.Object.Data.runMaxSpeed, movement.Object.Data.runAccel);
+        movement.Horizontal(movement.Object.Data.runMaxSpeed, movement.Object.Data.runAccel);
     }
 }

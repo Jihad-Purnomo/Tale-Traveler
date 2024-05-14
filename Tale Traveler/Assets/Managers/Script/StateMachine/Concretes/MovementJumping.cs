@@ -12,6 +12,7 @@ public class MovementJumping : MovementState
     {
         base.EnterState();
 
+        movement.ResetUpMomentum();
         movement.Object.Rb.AddForce(Vector2.up * movement.Object.Data.jumpForce, ForceMode2D.Impulse);
     }
 
@@ -24,11 +25,12 @@ public class MovementJumping : MovementState
     {
         base.UpdateFrame();
 
-        movement.ResetGroundTime();
+        movement.ResetGroundTIme();
         movement.ResetJumpTime();
-        if (movement.Object.Rb.velocity.y < 0f)
+
+        if (movement.Object.Rb.velocity.y <= 0f)
         {
-            movement.ChangeState(movement.fallState);
+            movement.ChangeState(movement.fallingState);
         }
     }
 
@@ -37,6 +39,6 @@ public class MovementJumping : MovementState
         base.UpdatePhysics();
 
         float accel = Input.Move.x != 0f ? movement.Object.Data.airAccel : movement.Object.Data.airDecel;
-        movement.HorizontalMovement(movement.Object.Data.airMaxSpeed, accel);
+        movement.Horizontal(movement.Object.Data.airMaxSpeed, accel);
     }
 }

@@ -38,6 +38,6 @@ public class MovementIdle : MovementState
         base.UpdatePhysics();
 
 
-        movement.HorizontalMovement(0f, movement.Object.Data.runDecel);
+        movement.Horizontal(0f, movement.Object.Data.runDecel);
     }
 }

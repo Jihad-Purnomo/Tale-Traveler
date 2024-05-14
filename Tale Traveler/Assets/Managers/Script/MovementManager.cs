@@ -14,20 +14,20 @@ public class MovementManager : MonoBehaviour
 
     public MovementIdle idleState { get; private set; }
     public MovementJumping jumpingState { get; private set; }
-    public MovementFalling fallState { get; private set; }
+    public MovementFalling fallingState { get; private set; }
     public MovementRunning runningState { get; private set; }
 
     private void Awake()
     {
         idleState = new MovementIdle(this);
         jumpingState = new MovementJumping(this);
-        fallState = new MovementFalling(this);
+        fallingState = new MovementFalling(this);
         runningState = new MovementRunning(this);
     }
 
     private void Start()
     {
-        currentState = fallState;
+        InitializeState(idleState);
     }
 
     private void Update()
@@ -46,21 +46,20 @@ public class MovementManager : MonoBehaviour
             lastPressedJump = Object.Data.inputBuffer;
         }
 
-        if (lastOnGroundTime > 0f)
-        {
-            lastOnGroundTime -= Time.deltaTime;
-        }
-
-        if (lastPressedJump > 0f)
-        {
-            lastPressedJump -= Time.deltaTime;
-        }
+        Countdown(lastOnGroundTime);
+        Countdown(lastPressedJump);
     }
 
     private void FixedUpdate()
     {
         currentState.UpdatePhysics();
-    }   
+    }
+
+    public void InitializeState(MovementState startingState)
+    {
+        currentState = startingState;
+        currentState.EnterState();
+    }
 
     public void ChangeState(MovementState newState)
     {
@@ -69,12 +68,20 @@ public class MovementManager : MonoBehaviour
         currentState.EnterState();
     }
 
+    public void Countdown(float timer)
+    {
+        if (timer > 0f)
+        {
+            timer -= Time.deltaTime;
+        }
+    }
+
     public void ResetJumpTime()
     {
         lastPressedJump = 0f;
     }
 
-    public void ResetGroundTime()
+    public void ResetGroundTIme()
     {
         lastOnGroundTime = 0f;
     }
@@ -84,9 +91,20 @@ public class MovementManager : MonoBehaviour
         Object.Rb.gravityScale = scale;
     }
 
-    public void HorizontalMovement(float targetSpeed, float accelRate)
+    public void ResetUpMomentum()
+    {
+        Object.Rb.velocity = new Vector2(Object.Rb.velocity.x, 0);
+    }
+
+    public void Horizontal(float targetSpeed, float accelRate)
     {
         float speedDif = Input.Move.x * targetSpeed - Object.Rb.velocity.x;
         Object.Rb.AddForce(Vector2.right * speedDif * accelRate);
+    }
+
+    public void ActivateObject(ObjectData objectData)
+    {
+        Object = objectData;
+        SetGravityScale(Object.Data.gravityScale);
     }
 }
