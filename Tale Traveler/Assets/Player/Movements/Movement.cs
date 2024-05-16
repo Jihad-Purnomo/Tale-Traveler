@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class MovementManager : MonoBehaviour
+public class Movement : MonoBehaviour
 {
-    public ObjectData Object;
+    public ObjectData Object { get; private set; }
+
     public float lastOnGroundTime { get; private set; }
     public float lastPressedJump { get; private set; }
+
     private Vector2 groundCheckPos;
     private MovementState currentState;
 
@@ -19,10 +21,10 @@ public class MovementManager : MonoBehaviour
 
     private void Awake()
     {
-        idleState = new MovementIdle(this);
-        jumpingState = new MovementJumping(this);
-        fallingState = new MovementFalling(this);
-        runningState = new MovementRunning(this);
+        idleState = new MovementIdle(this, Object);
+        jumpingState = new MovementJumping(this, Object);
+        fallingState = new MovementFalling(this, Object);
+        runningState = new MovementRunning(this, Object);
     }
 
     private void Start()

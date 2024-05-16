@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovementIdle : MovementState
 {
-    public MovementIdle(MovementManager movement) : base(movement)
+    public MovementIdle(Movement movement, ObjectData objectData) : base(movement, objectData)
     {
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private ObjectData Object;
-    private MovementManager Movement;
+    private Movement Movement;
     [SerializeField] private Collider2D Spell;
 
     private enum PlayerState { Busy = 0, Standby = 1, Spellcasting = 2 }
@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Object = GetComponent<ObjectData>();
-        Movement = FindObjectOfType<MovementManager>();
+        Movement = GetComponent<Movement>();
     }
 
     private void Start()

@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class MovementRunning : MovementState
 {
-    public MovementRunning(MovementManager movement) : base(movement)
+    public MovementRunning(Movement movement, ObjectData objectData) : base(movement, objectData)
     {
     }
 
     public override void EnterState()
     {
         base.EnterState();
+
+        AudioManager.Inst.PlayAudio(objectData.runningSound, objectData.transform);
     }
 
     public override void ExitState()
     {
         base.ExitState();
+
+        AudioManager.Inst.StopAudio(objectData.runningSound);
     }
 
     public override void UpdateFrame()
@@ -43,6 +47,6 @@ public class MovementRunning : MovementState
         base.UpdatePhysics();
 
 
-        movement.Horizontal(movement.Object.Data.runMaxSpeed, movement.Object.Data.runAccel);
+        movement.Horizontal(objectData.Data.runMaxSpeed, objectData.Data.runAccel);
     }
 }

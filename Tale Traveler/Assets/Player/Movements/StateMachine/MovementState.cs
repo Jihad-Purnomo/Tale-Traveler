@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class MovementState
 {
-    protected MovementManager movement;
+    protected Movement movement;
+    protected ObjectData objectData;
 
-    public MovementState(MovementManager movement)
+    public MovementState(Movement movement)
     {
         this.movement = movement;
+    }
+
+    public MovementState(Movement movement, ObjectData objectData)
+    {
+        this.movement = movement;
+        this.objectData = objectData;
     }
 
     public virtual void EnterState() { }

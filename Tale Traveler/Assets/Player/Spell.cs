@@ -6,11 +6,11 @@ public class Spell : MonoBehaviour
 {
     private Vector2 _direction;
     [SerializeField] float _speed;
-    private MovementManager Movement;
+    private Movement Movement;
 
     private void Awake()
     {
-        Movement = FindObjectOfType<MovementManager>();
+        Movement = GetComponentInParent<Movement>();
     }
 
     private void OnEnable()
