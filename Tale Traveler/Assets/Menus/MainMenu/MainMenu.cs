@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        Input.FirstUISelected(firstSelected);
+        Input.SelectUI(firstSelected);
     }
 
     public void StartLevel()

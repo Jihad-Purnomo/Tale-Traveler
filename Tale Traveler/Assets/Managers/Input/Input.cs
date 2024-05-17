@@ -55,8 +55,8 @@ public class Input : MonoBehaviour
         PlayerInput.SwitchCurrentActionMap(mapName);
     }
 
-    public static void FirstUISelected(GameObject button)
+    public static void SelectUI(GameObject button)
     {
-        eventSystem.firstSelectedGameObject = button;
+        eventSystem.SetSelectedGameObject(button);
     }
 }

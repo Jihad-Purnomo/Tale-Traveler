@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovementJumping : MovementState
 {
-    public MovementJumping(Movement movement, ObjectData objectData) : base(movement, objectData)
+    public MovementJumping(Movement movement) : base(movement)
     {
     }
 
@@ -12,7 +12,7 @@ public class MovementJumping : MovementState
     {
         base.EnterState();
 
-        AudioManager.Inst.PlayAudio(objectData.jumpingSound, objectData.transform);
+        AudioManager.Inst.PlayAudio(movement.Object.jumpingSound, movement.Object.transform);
 
         movement.ResetUpMomentum();
         movement.Object.Rb.AddForce(Vector2.up * movement.Object.Data.jumpForce, ForceMode2D.Impulse);

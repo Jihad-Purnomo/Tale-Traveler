@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovementFalling : MovementState
 {
-    public MovementFalling(Movement movement, ObjectData objectData) : base(movement, objectData)
+    public MovementFalling(Movement movement) : base(movement)
     {
     }
 
@@ -20,7 +20,7 @@ public class MovementFalling : MovementState
         base.ExitState();
 
         movement.SetGravityScale(movement.Object.Data.gravityScale);
-        AudioManager.Inst.PlayAudio(objectData.landingSound, objectData.transform);
+        AudioManager.Inst.PlayAudio(movement.Object.landingSound, movement.Object.transform);
     }
 
     public override void UpdateFrame()

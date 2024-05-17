@@ -421,7 +421,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b60ac487c70e5d418d896dc6235e06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenesToLoad: []
+  scenesToLoad:
+  - _sceneAsset: {fileID: 102900000, guid: 17321a46b4657df4194f215360a0147f, type: 3}
+    _sceneName: Chapter0Tutorial
   scenesToUnload:
   - _sceneAsset: {fileID: 102900000, guid: f0270d958f365784ca384367cb7ddf51, type: 3}
     _sceneName: MainMenu

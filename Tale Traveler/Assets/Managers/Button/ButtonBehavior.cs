@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class ButtonBehavior : MonoBehaviour
 {
-    public GameObject door;
+    [SerializeField] private GameObject door;
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Sticker"))
         {
             door.SetActive(false);
         }
-        else
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Sticker"))
         {
             door.SetActive(true);
         }
-    }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        door.SetActive(true);
     }
 }

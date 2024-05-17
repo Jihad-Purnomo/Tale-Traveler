@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     public float lastOnGroundTime { get; private set; }
     public float lastPressedJump { get; private set; }
 
-    private Vector2 groundCheckPos;
+    public Vector2 groundCheckPos { get; private set; }
     private MovementState currentState;
 
     public MovementIdle idleState { get; private set; }
@@ -21,10 +21,10 @@ public class Movement : MonoBehaviour
 
     private void Awake()
     {
-        idleState = new MovementIdle(this, Object);
-        jumpingState = new MovementJumping(this, Object);
-        fallingState = new MovementFalling(this, Object);
-        runningState = new MovementRunning(this, Object);
+        idleState = new MovementIdle(this);
+        jumpingState = new MovementJumping(this);
+        fallingState = new MovementFalling(this);
+        runningState = new MovementRunning(this);
     }
 
     private void Start()

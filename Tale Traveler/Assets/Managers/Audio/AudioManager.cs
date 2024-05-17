@@ -7,11 +7,11 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Inst;
 
     public AudioSource audioObject;
-    public List<ObjectSound> soundToStop = new List<ObjectSound>();
+    public Dictionary<ObjectSound, AudioSource> PlayingSound = new();
 
     private void Awake()
     {
-        if (Inst = null) Inst = this;
+        if (Inst == null) Inst = this;
     }
 
     public void PlayAudio(ObjectSound sound, Transform spawn)
@@ -22,26 +22,24 @@ public class AudioManager : MonoBehaviour
         audioSource.volume = sound.volume;
         audioSource.loop = sound.loop;
 
+        PlayingSound.Add(sound, audioSource);
+
         audioSource.Play();
 
-        for (int i = 0; i < soundToStop.Count; i++)
+        if (!audioSource.loop)
         {
-            if (soundToStop[i] == sound)
-            {
-                audioSource.Stop();
-                soundToStop.Remove(soundToStop[i]);
-            }
-        }
-
-        if (!audioSource.isPlaying)
-        {
-            Destroy(audioSource);
+            Destroy(audioSource.gameObject, audioSource.clip.length);
+            PlayingSound.Remove(sound);
         }
     }
 
     public void StopAudio(ObjectSound sound)
     {
-        soundToStop.Add(sound);
+        if (PlayingSound.ContainsKey(sound))
+        {
+            Destroy(PlayingSound[sound].gameObject);
+            PlayingSound.Remove(sound);
+        }
     }
 }
 
