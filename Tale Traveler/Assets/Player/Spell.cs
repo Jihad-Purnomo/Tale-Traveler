@@ -4,23 +4,39 @@ using UnityEngine;
 
 public class Spell : MonoBehaviour
 {
-    private Vector2 _direction;
-    [SerializeField] float _speed;
+    private Player Player;
     private Movement Movement;
+    public CameraLogic Camera { get; private set; }
+
+    [SerializeField] private float speed;
+    [SerializeField] private float duration;
+
+    private Vector2 direction;
+    private float timer;
 
     private void Awake()
     {
+        Player = GetComponentInParent<Player>();
         Movement = GetComponentInParent<Movement>();
+        Camera = FindObjectOfType<CameraLogic>();
     }
 
     private void OnEnable()
     {
-        _direction = new Vector2(1, Input.Move.y);
+        direction = new Vector2(1, Input.Move.y);
+        timer = duration;
+        Camera.SetFollow(transform);
     }
 
     private void Update()
     {
-        transform.Translate(_direction * Time.deltaTime * _speed);
+        transform.Translate(direction * speed * Time.deltaTime);
+        timer -= Time.deltaTime;
+
+        if (timer < 0f)
+        {
+            Player.DeactivateSpell();
+        }
     }
 
     private void OnDisable()
@@ -30,14 +46,24 @@ public class Spell : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            gameObject.SetActive(false);
+            Player.DeactivateSpell();
         }
 
         if (collision.gameObject.CompareTag("Sticker"))
         {
-            Movement.ActivateObject(collision.GetComponent<ObjectData>());
+            gameObject.SetActive(false);
+
+            switch (Player.selectedSpell)
+            {
+                case Player.SpellType.Telekinesis:
+                    Movement.ActivateObject(collision.GetComponent<ObjectData>());
+                    Camera.SetFollow(collision.transform);
+                    break;
+                case Player.SpellType.Duplicate:
+                    break;
+            }
         }
     }
 }

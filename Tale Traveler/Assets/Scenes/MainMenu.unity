@@ -422,8 +422,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenesToLoad:
-  - _sceneAsset: {fileID: 102900000, guid: 17321a46b4657df4194f215360a0147f, type: 3}
-    _sceneName: Chapter0Tutorial
+  - _sceneAsset: {fileID: 102900000, guid: 4a834c32002ee484cb2d0906a23549b1, type: 3}
+    _sceneName: ChapterPrologue
   scenesToUnload:
   - _sceneAsset: {fileID: 102900000, guid: f0270d958f365784ca384367cb7ddf51, type: 3}
     _sceneName: MainMenu

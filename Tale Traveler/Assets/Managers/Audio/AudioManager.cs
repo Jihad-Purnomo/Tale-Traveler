@@ -16,20 +16,23 @@ public class AudioManager : MonoBehaviour
 
     public void PlayAudio(ObjectSound sound, Transform spawn)
     {
-        AudioSource audioSource = Instantiate(audioObject, spawn.position, Quaternion.identity);
-
-        audioSource.clip = sound.audioClip;
-        audioSource.volume = sound.volume;
-        audioSource.loop = sound.loop;
-
-        PlayingSound.Add(sound, audioSource);
-
-        audioSource.Play();
-
-        if (!audioSource.loop)
+        if (!PlayingSound.ContainsKey(sound))
         {
-            Destroy(audioSource.gameObject, audioSource.clip.length);
-            PlayingSound.Remove(sound);
+            AudioSource audioSource = Instantiate(audioObject, spawn.position, Quaternion.identity);
+
+            audioSource.clip = sound.audioClip;
+            audioSource.volume = sound.volume;
+            audioSource.loop = sound.loop;
+
+            PlayingSound.Add(sound, audioSource);
+
+            audioSource.Play();
+
+            if (!audioSource.loop)
+            {
+                Destroy(audioSource.gameObject, audioSource.clip.length);
+                PlayingSound.Remove(sound);
+            }
         }
     }
 
