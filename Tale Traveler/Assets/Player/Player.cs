@@ -6,12 +6,18 @@ public class Player : MonoBehaviour
 {
     private ObjectData Object;
     private Movement Movement;
-    [SerializeField] private Collider2D Spell;
+    [SerializeField] private Spell Spell;
 
-    private enum PlayerState { Busy = 0, Standby = 1, Spellcasting = 2 }
+    private int facing;
+
+    private bool hasTelekinesis = false;
+    private bool hasDuplicate = false;
+
+    private enum PlayerState { Busy = 0, Standby = 1, Dragging = 2, Spellcasting = 3 }
+    public enum SpellType { None = 0, Telekinesis = 1, Duplicate = 2 }
+
     private PlayerState currentState;
-
-    public int FaceValue { get; private set; }
+    public SpellType selectedSpell { get; private set; }
 
     private void Awake()
     {
@@ -22,11 +28,36 @@ public class Player : MonoBehaviour
     private void Start()
     {
         Movement.ActivateObject(Object);
-        FaceValue = 1;
+        GetSpell(SpellType.Telekinesis);
+        facing = 1;
     }
 
     private void Update()
     {
+        if (Input.ChangeSpell)
+        {
+            switch (selectedSpell)
+            {
+                case SpellType.None:
+                    if (hasTelekinesis)
+                    {
+                        selectedSpell = SpellType.Telekinesis;
+                    }
+                    break;
+
+                case SpellType.Telekinesis:
+                    if (hasDuplicate)
+                    {
+                        selectedSpell = SpellType.Duplicate;
+                    }
+                    break;
+
+                case SpellType.Duplicate:
+                    selectedSpell = SpellType.Telekinesis;
+                    break;
+            }
+        }
+
         switch (currentState)
         {
             case PlayerState.Busy:
@@ -36,22 +67,23 @@ public class Player : MonoBehaviour
                 }
                 break;
 
-            case PlayerState.Standby:
-                if (Input.Move.x == -FaceValue)
+            case PlayerState.Standby:             
+                if (Input.Move.x == -facing)
                 {
                     Turn();
                 }
-
                 if (Movement.lastOnGroundTime <= 0f)
                 {
                     currentState = PlayerState.Busy;
                 }
-
-                if (Input.SpellPressed)
+                if (Input.SpellPressed && hasTelekinesis)
                 {
                     currentState = PlayerState.Spellcasting;
                     Spell.gameObject.SetActive(true);
                 }
+                break;
+
+            case PlayerState.Dragging:
                 break;
 
             case PlayerState.Spellcasting:
@@ -59,17 +91,47 @@ public class Player : MonoBehaviour
 
                 if (Input.SpellReleased)
                 {
-                    Spell.gameObject.SetActive(false);
-                    Movement.ActivateObject(Object);
-                    currentState = PlayerState.Standby;
-                }
+                    DeactivateSpell();
+                }                
                 break;
         }
+    }
+
+    public void GetSpell(SpellType spell)
+    {
+        switch (spell)
+        {
+            case SpellType.Telekinesis:
+                hasTelekinesis = true;
+                selectedSpell = SpellType.Telekinesis;
+                break;
+
+            case SpellType.Duplicate:
+                hasDuplicate = true;
+                selectedSpell = SpellType.Duplicate;
+                break;
+        }
+    }
+
+    public void DeactivateSpell()
+    {
+        if (Spell.gameObject.activeSelf)
+        {
+            Spell.gameObject.SetActive(false);
+        }
+
+        if (Movement.Object != Object)
+        {
+            Movement.ActivateObject(Object);
+        }
+
+        Spell.Camera.SetFollow(transform);
+        currentState = PlayerState.Standby;
     }
 
     public void Turn()
     {
         transform.Rotate(0, 180, 0);
-        FaceValue *= -1;
+        facing *= -1;
     }
 }

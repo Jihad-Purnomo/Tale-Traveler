@@ -16,11 +16,13 @@ public class Input : MonoBehaviour
     public static bool GrabReleased { get; private set; }
     public static bool SpellPressed { get; private set; }
     public static bool SpellReleased { get; private set; }
+    public static bool ChangeSpell { get; private set; }
 
     private InputAction _move;
     private InputAction _jump;
     private InputAction _grab;
     private InputAction _spell;
+    private InputAction _changeSpell;
 
     private void Awake()
     {
@@ -34,6 +36,7 @@ public class Input : MonoBehaviour
         _jump = PlayerInput.actions["Jump"];
         _grab = PlayerInput.actions["Grab"];
         _spell = PlayerInput.actions["Spell"];
+        _changeSpell = PlayerInput.actions["ChangeSpell"];
     }
 
     private void Update()
@@ -48,6 +51,8 @@ public class Input : MonoBehaviour
 
         SpellPressed = _spell.WasPressedThisFrame();
         SpellReleased = _spell.WasReleasedThisFrame();
+
+        ChangeSpell = _changeSpell.WasPressedThisFrame();
     }
 
     public static void ChangeActionMap(string mapName)

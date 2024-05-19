@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3133888182581894117}
   - component: {fileID: 3580168432348606924}
   - component: {fileID: 4285712596020237791}
-  - component: {fileID: 8381670123222649094}
+  - component: {fileID: 700321999194667126}
   m_Layer: 0
   m_Name: Spell
   m_TagString: Untagged
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &8381670123222649094
+--- !u!114 &700321999194667126
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a6c830c1139cb4db176c4d93d4ce1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 12
   duration: 1
 --- !u!1 &5516661520659652118
 GameObject:
@@ -148,10 +148,10 @@ GameObject:
   - component: {fileID: 2374776302418185148}
   - component: {fileID: 6097432434281302565}
   - component: {fileID: 5226668046663484259}
-  - component: {fileID: 6848144946895855405}
   - component: {fileID: 6650875990525669512}
-  m_Layer: 0
-  m_Name: Player
+  - component: {fileID: -2405894697535125134}
+  m_Layer: 6
+  m_Name: PlayerEx
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -322,19 +322,6 @@ MonoBehaviour:
     volume: 0.54
     loop: 0
   <Data>k__BackingField: {fileID: 11400000, guid: d1ae5cd2a1370ec4db440b0995192369, type: 2}
---- !u!114 &6848144946895855405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5516661520659652118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7455c6f327181ae499fb81c72bd2be2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Spell: {fileID: 8381670123222649094}
 --- !u!114 &6650875990525669512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,3 +334,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe0e7dc23f889641aa2465b68c715f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2405894697535125134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5516661520659652118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7455c6f327181ae499fb81c72bd2be2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Spell: {fileID: 700321999194667126}
