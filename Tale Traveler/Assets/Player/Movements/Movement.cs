@@ -107,6 +107,7 @@ public class Movement : MonoBehaviour
     public void ActivateObject(ObjectData objectData)
     {
         Object = objectData;
+        InitializeState(idleState);
         SetGravityScale(Object.Data.gravityScale);
     }
 }

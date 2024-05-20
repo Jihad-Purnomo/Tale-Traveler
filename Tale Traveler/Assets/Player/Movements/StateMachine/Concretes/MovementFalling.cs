@@ -20,7 +20,6 @@ public class MovementFalling : MovementState
         base.ExitState();
 
         movement.SetGravityScale(movement.Object.Data.gravityScale);
-        AudioManager.Inst.PlayAudio(movement.Object.landingSound, movement.Object.transform);
     }
 
     public override void UpdateFrame()
@@ -29,6 +28,8 @@ public class MovementFalling : MovementState
 
         if (movement.lastOnGroundTime > 0f)
         {
+            AudioManager.Inst.PlayAudio(movement.Object.landingSound, movement.Object.transform);
+
             movement.ChangeState(movement.idleState);
         }
     }
