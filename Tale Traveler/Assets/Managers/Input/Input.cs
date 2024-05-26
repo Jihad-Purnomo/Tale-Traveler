@@ -18,11 +18,17 @@ public class Input : MonoBehaviour
     public static bool SpellReleased { get; private set; }
     public static bool ChangeSpell { get; private set; }
 
+    public static bool MenuSubmit { get; private set; }
+    public static bool MenuCancel { get; private set; }
+
     private InputAction _move;
     private InputAction _jump;
     private InputAction _grab;
     private InputAction _spell;
     private InputAction _changeSpell;
+
+    private InputAction _submit;
+    private InputAction _cancel;
 
     private void Awake()
     {
@@ -37,6 +43,9 @@ public class Input : MonoBehaviour
         _grab = PlayerInput.actions["Grab"];
         _spell = PlayerInput.actions["Spell"];
         _changeSpell = PlayerInput.actions["ChangeSpell"];
+
+        _submit = PlayerInput.actions["Submit"];
+        _cancel = PlayerInput.actions["Cancel"];
     }
 
     private void Update()
@@ -53,6 +62,9 @@ public class Input : MonoBehaviour
         SpellReleased = _spell.WasReleasedThisFrame();
 
         ChangeSpell = _changeSpell.WasPressedThisFrame();
+
+        MenuSubmit = _submit.WasPressedThisFrame();
+        MenuCancel = _cancel.WasPressedThisFrame();
     }
 
     public static void ChangeActionMap(string mapName)
