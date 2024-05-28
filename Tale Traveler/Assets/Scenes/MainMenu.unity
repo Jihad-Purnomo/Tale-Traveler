@@ -411,6 +411,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenesToLoad:
+  - _sceneAsset: {fileID: 102900000, guid: 1b74d12ea1f33a04aa37d814fbd1876b, type: 3}
+    _sceneName: GameplayUI
   - _sceneAsset: {fileID: 102900000, guid: 4a834c32002ee484cb2d0906a23549b1, type: 3}
     _sceneName: ChapterPrologue
   scenesToUnload:
@@ -418,7 +420,7 @@ MonoBehaviour:
     _sceneName: MainMenu
   MainMenuMusic:
     audioClip: {fileID: 8300000, guid: 2e477f243255ccf42aa0ca57eb610661, type: 3}
-    volume: 0.4
+    volume: 0.299
     loop: 1
   emptyButton: {fileID: 1013119030}
   bookButton: {fileID: 1351300205}

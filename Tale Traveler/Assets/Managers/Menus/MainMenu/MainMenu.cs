@@ -77,6 +77,8 @@ public class MainMenu : MonoBehaviour
     {
         AudioManager.Inst.StopAudio(MainMenuMusic);
 
+        Input.ChangeActionMap("Gameplay");
+
         GameManager.LoadScenes(scenesToLoad);
         GameManager.UnloadScenes(scenesToUnload);
     }
