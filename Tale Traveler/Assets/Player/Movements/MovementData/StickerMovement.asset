@@ -26,4 +26,4 @@ MonoBehaviour:
   groundCheckSize: {x: 0.9, y: 0.2}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 264

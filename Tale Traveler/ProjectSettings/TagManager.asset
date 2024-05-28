@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Sticker
   - AreaConfiner
+  - StickerBase
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - AreaConfiner
   - StickerPlatform
   - StickerBody
-  - 
-  - 
+  - StickerBase
+  - StickerArea
   - 
   - 
   - 

@@ -15,6 +15,12 @@ public class Player : MonoBehaviour
     private bool hasTelekinesis = false;
     private bool hasDuplicate = false;
 
+    private bool isTouchingSticker = false;
+    private Transform touchedSticker;
+    private Vector3 stickerDistance;
+
+    [SerializeField] private float dragMult;
+
     private enum PlayerState { Busy = 0, Standby = 1, Dragging = 2, Spellcasting = 3 }
     public enum SpellType { None = 0, Telekinesis = 1, Duplicate = 2 }
 
@@ -72,22 +78,32 @@ public class Player : MonoBehaviour
                 break;
 
             case PlayerState.Standby:
-                if (Input.Move.x != 0)
-                {
-                    anim.Play("PlayerRun");
-                }
                 if (Input.Move.x == 0)
                 {
                     anim.Play("PlayerIdle");
                 }
+                else
+                {
+                    anim.Play("PlayerRun");
+                }
+
                 if (Input.Move.x == -facing)
                 {
                     Turn();
                 }
+
                 if (Movement.lastOnGroundTime <= 0f)
                 {
                     currentState = PlayerState.Busy;
                 }
+
+                if (Input.GrabPressed && isTouchingSticker)
+                {
+                    Input.DisableAction(Input.jumpAction);
+                    stickerDistance = touchedSticker.parent.position - transform.position;
+                    currentState = PlayerState.Dragging;
+                }
+
                 if (Input.SpellPressed && hasTelekinesis)
                 {
                     currentState = PlayerState.Spellcasting;
@@ -96,6 +112,14 @@ public class Player : MonoBehaviour
                 break;
 
             case PlayerState.Dragging:
+                Object.Rb.velocity = new Vector2(Object.Rb.velocity.x * dragMult, Object.Rb.velocity.y);
+                touchedSticker.parent.position = transform.position + stickerDistance;
+
+                if (Input.GrabReleased)
+                {
+                    Input.EnableAction(Input.jumpAction);
+                    currentState = PlayerState.Standby;
+                }
                 break;
 
             case PlayerState.Spellcasting:
@@ -106,6 +130,23 @@ public class Player : MonoBehaviour
                     DeactivateSpell();
                 }                
                 break;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("StickerBase") && !isTouchingSticker)
+        {
+            isTouchingSticker = true;
+            touchedSticker = collision.transform;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("StickerBase"))
+        {
+            isTouchingSticker = false;
         }
     }
 

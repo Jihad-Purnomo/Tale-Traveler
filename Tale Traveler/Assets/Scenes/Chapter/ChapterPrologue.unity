@@ -1056,11 +1056,11 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 576
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 150
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -1490,11 +1490,11 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 576
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 150
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -1642,11 +1642,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2376456779223875223, guid: 9360f793b248df7428acc93e22c38836, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 50.5
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2376456779223875223, guid: 9360f793b248df7428acc93e22c38836, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 2376456779223875223, guid: 9360f793b248df7428acc93e22c38836, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3133,11 +3133,11 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 576
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 150
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -4398,11 +4398,11 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 576
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 150
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -4637,13 +4637,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: StickerTangga
       objectReference: {fileID: 0}
+    - target: {fileID: 1462191861193787213, guid: 9360f793b248df7428acc93e22c38836, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 2376456779223875223, guid: 9360f793b248df7428acc93e22c38836, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18
+      value: 17.5
       objectReference: {fileID: 0}
     - target: {fileID: 2376456779223875223, guid: 9360f793b248df7428acc93e22c38836, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 2376456779223875223, guid: 9360f793b248df7428acc93e22c38836, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4692,11 +4696,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5990207438813013623, guid: 50fb9a83f287f324e8f7d519d3338cfc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: -0.45999908
       objectReference: {fileID: 0}
     - target: {fileID: 5990207438813013623, guid: 50fb9a83f287f324e8f7d519d3338cfc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.029999971
       objectReference: {fileID: 0}
     - target: {fileID: 5990207438813013623, guid: 50fb9a83f287f324e8f7d519d3338cfc, type: 3}
       propertyPath: m_LocalPosition.z

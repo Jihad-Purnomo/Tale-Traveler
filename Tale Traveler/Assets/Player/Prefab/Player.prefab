@@ -357,6 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Spell: {fileID: 8381670123222649094}
+  dragMult: 0.85
 --- !u!114 &6650875990525669512
 MonoBehaviour:
   m_ObjectHideFlags: 0

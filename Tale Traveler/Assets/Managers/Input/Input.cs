@@ -22,7 +22,7 @@ public class Input : MonoBehaviour
     public static bool MenuCancel { get; private set; }
 
     private InputAction _move;
-    private InputAction _jump;
+    public static InputAction jumpAction { get; private set; }
     private InputAction _grab;
     private InputAction _spell;
     private InputAction _changeSpell;
@@ -39,7 +39,7 @@ public class Input : MonoBehaviour
     private void Start()
     {
         _move = PlayerInput.actions["Move"];
-        _jump = PlayerInput.actions["Jump"];
+        jumpAction = PlayerInput.actions["Jump"];
         _grab = PlayerInput.actions["Grab"];
         _spell = PlayerInput.actions["Spell"];
         _changeSpell = PlayerInput.actions["ChangeSpell"];
@@ -52,8 +52,8 @@ public class Input : MonoBehaviour
     {
         Move = _move.ReadValue<Vector2>();
 
-        JumpPressed = _jump.WasPressedThisFrame();
-        JumpReleased = _jump.WasReleasedThisFrame();
+        JumpPressed = jumpAction.WasPressedThisFrame();
+        JumpReleased = jumpAction.WasReleasedThisFrame();
 
         GrabPressed = _grab.WasPressedThisFrame();
         GrabReleased = _grab.WasReleasedThisFrame();
@@ -65,6 +65,16 @@ public class Input : MonoBehaviour
 
         MenuSubmit = _submit.WasPressedThisFrame();
         MenuCancel = _cancel.WasPressedThisFrame();
+    }
+
+    public static void DisableAction(InputAction action)
+    {
+        action.Disable();
+    }
+
+    public static void EnableAction(InputAction action)
+    {
+        action.Enable();
     }
 
     public static void ChangeActionMap(string mapName)
