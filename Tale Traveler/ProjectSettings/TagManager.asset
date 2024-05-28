@@ -16,8 +16,8 @@ TagManager:
   - UI
   - Player
   - AreaConfiner
-  - 
-  - 
+  - StickerPlatform
+  - StickerBody
   - 
   - 
   - 
@@ -43,4 +43,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BG0
+    uniqueID: 761161435
+    locked: 0
+  - name: BG1
+    uniqueID: 3046170999
+    locked: 0
+  - name: BG2
+    uniqueID: 2129938559
+    locked: 0
+  - name: Platform
+    uniqueID: 3193067809
+    locked: 0
+  - name: Player
+    uniqueID: 858691115
+    locked: 0
+  - name: HUD
+    uniqueID: 2842794061
     locked: 0

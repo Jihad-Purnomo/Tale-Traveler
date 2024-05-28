@@ -12,6 +12,7 @@ public class ObjectData : MonoBehaviour
     [field: SerializeField] public ObjectSound landingSound { get; private set; }
 
     [field:SerializeField]public MovementData Data { get; private set; }
+    public ContactFilter2D groundFilter { get; private set; }
     public Vector2 groundCheckSize { get; private set; }
 
     private void Awake()

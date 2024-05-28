@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     private Movement Movement;
     [SerializeField] private Spell Spell;
 
+    private Animator anim;
+
     private int facing;
 
     private bool hasTelekinesis = false;
@@ -23,6 +25,8 @@ public class Player : MonoBehaviour
     {
         Object = GetComponent<ObjectData>();
         Movement = GetComponent<Movement>();
+
+        anim = GetComponent<Animator>();
     }
 
     private void Start()
@@ -67,7 +71,15 @@ public class Player : MonoBehaviour
                 }
                 break;
 
-            case PlayerState.Standby:             
+            case PlayerState.Standby:
+                if (Input.Move.x != 0)
+                {
+                    anim.Play("PlayerRun");
+                }
+                if (Input.Move.x == 0)
+                {
+                    anim.Play("PlayerIdle");
+                }
                 if (Input.Move.x == -facing)
                 {
                     Turn();

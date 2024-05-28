@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8e97eb615658c34d8f95cb75dfd4921, type: 3}
-  m_Name: PlayerMovement
+  m_Name: StickerMovement
   m_EditorClassIdentifier: 
   runMaxSpeed: 5
   runAccel: 6
-  runDecel: 10
+  runDecel: 5
   airMaxSpeed: 3
   airAccel: 2
   airDecel: 2
@@ -23,7 +23,7 @@ MonoBehaviour:
   fallGravityMult: 3
   inputBuffer: 1
   coyoteTime: 1
-  groundCheckSize: {x: 0.2, y: 0.2}
+  groundCheckSize: {x: 0.9, y: 0.2}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 264
+    m_Bits: 8
