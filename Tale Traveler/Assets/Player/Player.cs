@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDataPersistence
 {
     private ObjectData Object;
     private Movement Movement;
@@ -148,6 +148,16 @@ public class Player : MonoBehaviour
         {
             isTouchingSticker = false;
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.transform.position = data.playerPosition;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.playerPosition = this.transform.position;
     }
 
     public void GetSpell(SpellType spell)
