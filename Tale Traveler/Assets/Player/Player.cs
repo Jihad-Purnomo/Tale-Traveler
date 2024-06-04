@@ -107,7 +107,7 @@ public class Player : MonoBehaviour, IDataPersistence
                     currentState = PlayerState.Busy;
                 }
 
-                if (Input.GrabPressed && isTouchingSticker)
+                if (Input.GrabHeld && isTouchingSticker)
                 {
                     Input.DisableAction(Input.jumpAction);
                     stickerDistance = touchedSticker.parent.position - transform.position;

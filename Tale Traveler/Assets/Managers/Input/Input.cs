@@ -14,6 +14,7 @@ public class Input : MonoBehaviour
     public static bool JumpReleased { get; private set; }
     public static bool GrabPressed { get; private set; }
     public static bool GrabReleased { get; private set; }
+    public static bool GrabHeld { get; private set; }
     public static bool SpellPressed { get; private set; }
     public static bool SpellReleased { get; private set; }
     public static bool ChangeSpell { get; private set; }
@@ -57,6 +58,7 @@ public class Input : MonoBehaviour
 
         GrabPressed = _grab.WasPressedThisFrame();
         GrabReleased = _grab.WasReleasedThisFrame();
+        GrabHeld = _grab.IsPressed();
 
         SpellPressed = _spell.WasPressedThisFrame();
         SpellReleased = _spell.WasReleasedThisFrame();
