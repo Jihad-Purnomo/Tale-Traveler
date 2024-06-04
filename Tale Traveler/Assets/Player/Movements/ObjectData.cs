@@ -15,6 +15,9 @@ public class ObjectData : MonoBehaviour
     public ContactFilter2D groundFilter { get; private set; }
     public Vector2 groundCheckSize { get; private set; }
 
+    //tambahan kode dari tutorial youtube
+    private float forceAmount;
+
     private void Awake()
     {
         Rb = GetComponent<Rigidbody2D>();
@@ -24,5 +27,7 @@ public class ObjectData : MonoBehaviour
     void Start()
     {
         groundCheckSize = new Vector2(col.bounds.size.x * Data.groundCheckSize.x, Data.groundCheckSize.y);
+        //tambah kode dibawah buat stiker bisa ngambang di air
+        //Rb.velocity = Vector3.down * forceAmount;
     }
 }
