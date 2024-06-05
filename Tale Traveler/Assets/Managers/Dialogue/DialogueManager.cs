@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Inst;
 
+    public GameObject DialogueBubble;
     public Image CharProfile;
     public TextMeshProUGUI NameArea;
     public TextMeshProUGUI TextArea;
@@ -42,6 +43,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        DialogueBubble.SetActive(true);
         Input.ChangeActionMap("UI");
         lines.Clear();
 
@@ -106,9 +108,11 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         Input.ChangeActionMap("Gameplay");
+        DialogueBubble.SetActive(false);
     }
 }
 
+[System.Serializable]
 public class DialogueLine
 {
     public bool LeftSide;
@@ -117,6 +121,7 @@ public class DialogueLine
     [TextArea(3, 10)] public string Line;
 }
 
+[System.Serializable]
 public class Dialogue
 {
     public List<DialogueLine> DialogueLines = new List<DialogueLine>();
