@@ -57,8 +57,14 @@ TagManager:
   - name: Platform
     uniqueID: 3193067809
     locked: 0
+  - name: Sticker
+    uniqueID: 1193052875
+    locked: 0
   - name: Player
     uniqueID: 858691115
+    locked: 0
+  - name: FG
+    uniqueID: 4154726347
     locked: 0
   - name: HUD
     uniqueID: 2842794061

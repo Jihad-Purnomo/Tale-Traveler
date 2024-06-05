@@ -14,10 +14,14 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject emptyButton;
     [SerializeField] private GameObject bookButton;
 
+    [SerializeField] private Image titleScreenImage;
+    [SerializeField] private float fadeOutTime;
+
     private Animator bookAnim;
 
     private GameObject currentSelected;
     private bool bookOpened = false;
+    private bool inTitleScreen = true;
 
     private void Awake()
     {
@@ -28,8 +32,8 @@ public class MainMenu : MonoBehaviour
     {
         Input.ChangeActionMap("UI");
 
-        Input.SelectUI(bookButton);
-        currentSelected = bookButton;
+        Input.SelectUI(emptyButton);
+        currentSelected = emptyButton;
         currentSelected.transform.GetChild(0).gameObject.SetActive(true);
 
         AudioManager.Inst.PlayAudio(MainMenuMusic, transform);
@@ -37,6 +41,24 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
+        if (inTitleScreen)
+        {
+            if (Input.MenuSubmit)
+            {
+                StartCoroutine(RemoveTitleScreen());
+            }
+
+            if (Input.MenuCancel)
+            {
+                QuitApp();
+            }
+        }
+        
+        if (!inTitleScreen && !bookOpened && Input.MenuCancel)
+        {
+            AppearTitleScreen();
+        }
+
         if (Input.eventSystem.currentSelectedGameObject != currentSelected)
         {
             currentSelected.transform.GetChild(0).gameObject.SetActive(false);
@@ -44,10 +66,34 @@ public class MainMenu : MonoBehaviour
             currentSelected.transform.GetChild(0).gameObject.SetActive(true);
         }
 
-        if (bookOpened && Input.MenuCancel)
+        if (bookOpened)
         {
-            StartCoroutine(CloseBook());
+            if (Input.MenuCancel)
+            { 
+                StartCoroutine(CloseBook());
+            }
+
+            if (Input.MenuSubmit)
+            {
+                BeginStory();
+            }
         }
+    }
+
+    IEnumerator RemoveTitleScreen()
+    {
+        titleScreenImage.CrossFadeAlpha(0f, fadeOutTime, true);
+        yield return new WaitForSeconds(fadeOutTime);
+        inTitleScreen = false;
+        Input.SelectUI(bookButton);
+    }
+
+    IEnumerator AppearTitleScreen()
+    {
+        titleScreenImage.CrossFadeAlpha(1f, fadeOutTime, true);
+        yield return new WaitForSeconds(fadeOutTime);
+        inTitleScreen = true;
+        Input.SelectUI(emptyButton);
     }
 
     IEnumerator OpenBook()

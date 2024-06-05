@@ -71,6 +71,16 @@ public class Player : MonoBehaviour, IDataPersistence
         switch (currentState)
         {
             case PlayerState.Busy:
+                if (Object.Rb.velocity.y > 0f)
+                {
+                    anim.Play("PlayerJump");
+                }
+
+                if (Object.Rb.velocity.y < 0f)
+                {
+                    anim.Play("PlayerFall");
+                }
+
                 if (Movement.lastOnGroundTime > 0f)
                 {
                     currentState = PlayerState.Standby;
@@ -97,7 +107,7 @@ public class Player : MonoBehaviour, IDataPersistence
                     currentState = PlayerState.Busy;
                 }
 
-                if (Input.GrabPressed && isTouchingSticker)
+                if (Input.GrabHeld && isTouchingSticker)
                 {
                     Input.DisableAction(Input.jumpAction);
                     stickerDistance = touchedSticker.parent.position - transform.position;
@@ -114,6 +124,16 @@ public class Player : MonoBehaviour, IDataPersistence
             case PlayerState.Dragging:
                 Object.Rb.velocity = new Vector2(Object.Rb.velocity.x * dragMult, Object.Rb.velocity.y);
                 touchedSticker.parent.position = transform.position + stickerDistance;
+                
+                if (Input.Move.x == 0f)
+                {
+                    anim.Play("PlayerGrab");
+                }
+                else
+                {
+                    if (Mathf.Sign(Input.Move.x) == Mathf.Sign(facing)) anim.Play("PlayerPush");
+                    else anim.Play("PlayerPull");
+                }
 
                 if (Input.GrabReleased)
                 {
