@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -87,5 +88,10 @@ public class Input : MonoBehaviour
     public static void SelectUI(GameObject button)
     {
         eventSystem.SetSelectedGameObject(button);
+    }
+
+    internal static float GetAxis(string v)
+    {
+        throw new NotImplementedException();
     }
 }
