@@ -57,11 +57,11 @@ public class Spell : MonoBehaviour
 
             switch (Player.selectedSpell)
             {
-                case Player.SpellType.Telekinesis:
+                case SpellType.Telekinesis:
                     Movement.ActivateObject(collision.GetComponentInParent<ObjectData>());
                     Camera.SetFollow(collision.transform);
                     break;
-                case Player.SpellType.Duplicate:
+                case SpellType.Duplicate:
                     break;
             }
         }

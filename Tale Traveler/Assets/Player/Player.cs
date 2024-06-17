@@ -12,6 +12,7 @@ public class Player : MonoBehaviour, IDataPersistence
 
     private int facing;
 
+    private bool gettingSpell = false;
     private bool hasTelekinesis = false;
     private bool hasDuplicate = false;
 
@@ -22,7 +23,6 @@ public class Player : MonoBehaviour, IDataPersistence
     [SerializeField] private float dragMult;
 
     private enum PlayerState { Busy = 0, Standby = 1, Dragging = 2, Spellcasting = 3 }
-    public enum SpellType { None = 0, Telekinesis = 1, Duplicate = 2 }
 
     private PlayerState currentState;
     public SpellType selectedSpell { get; private set; }
@@ -38,7 +38,6 @@ public class Player : MonoBehaviour, IDataPersistence
     private void Start()
     {
         Movement.ActivateObject(Object);
-        GetSpell(SpellType.Telekinesis);
         facing = 1;
     }
 
@@ -149,7 +148,13 @@ public class Player : MonoBehaviour, IDataPersistence
                 if (Input.SpellReleased)
                 {
                     DeactivateSpell();
-                }                
+                }
+
+                if (gettingSpell && !DialogueManager.Inst.inDialogue)
+                {
+                    gettingSpell = false;
+                    currentState = PlayerState.Standby;
+                }
                 break;
         }
     }
@@ -183,6 +188,9 @@ public class Player : MonoBehaviour, IDataPersistence
 
     public void GetSpell(SpellType spell)
     {
+        currentState = PlayerState.Spellcasting;
+        gettingSpell = true;
+
         switch (spell)
         {
             case SpellType.Telekinesis:
@@ -219,3 +227,5 @@ public class Player : MonoBehaviour, IDataPersistence
         facing *= -1;
     }
 }
+
+public enum SpellType { None = 0, Telekinesis = 1, Duplicate = 2 }

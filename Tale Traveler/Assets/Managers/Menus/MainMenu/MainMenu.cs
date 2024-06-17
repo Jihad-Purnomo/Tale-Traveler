@@ -14,8 +14,10 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject emptyButton;
     [SerializeField] private GameObject bookButton;
 
-    [SerializeField] private Image titleScreenImage;
+    [SerializeField] private GameObject titleScreen;
     [SerializeField] private float fadeOutTime;
+
+    private Image[] titleScreenImages;
 
     private Animator bookAnim;
 
@@ -31,6 +33,8 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         Input.ChangeActionMap("UI");
+
+        titleScreenImages = titleScreen.GetComponentsInChildren<Image>();
 
         Input.SelectUI(emptyButton);
         currentSelected = emptyButton;
@@ -56,7 +60,7 @@ public class MainMenu : MonoBehaviour
         
         if (!inTitleScreen && !bookOpened && Input.MenuCancel)
         {
-            AppearTitleScreen();
+            StartCoroutine(AppearTitleScreen());
         }
 
         if (Input.eventSystem.currentSelectedGameObject != currentSelected)
@@ -82,7 +86,10 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator RemoveTitleScreen()
     {
-        titleScreenImage.CrossFadeAlpha(0f, fadeOutTime, true);
+        for (int i = 0; i < titleScreenImages.Length; i++)
+        {
+            titleScreenImages[i].CrossFadeAlpha(0f, fadeOutTime, true);
+        }
         yield return new WaitForSeconds(fadeOutTime);
         inTitleScreen = false;
         Input.SelectUI(bookButton);
@@ -90,7 +97,10 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator AppearTitleScreen()
     {
-        titleScreenImage.CrossFadeAlpha(1f, fadeOutTime, true);
+        for (int i = 0; i < titleScreenImages.Length; i++)
+        {
+            titleScreenImages[i].CrossFadeAlpha(1f, fadeOutTime, true);
+        }
         yield return new WaitForSeconds(fadeOutTime);
         inTitleScreen = true;
         Input.SelectUI(emptyButton);

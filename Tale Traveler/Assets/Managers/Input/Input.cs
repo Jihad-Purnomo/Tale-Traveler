@@ -21,6 +21,7 @@ public class Input : MonoBehaviour
     public static bool ChangeSpell { get; private set; }
 
     public static bool MenuSubmit { get; private set; }
+    public static bool MenuSubmitHeld { get; private set; }
     public static bool MenuCancel { get; private set; }
 
     private InputAction _move;
@@ -67,6 +68,7 @@ public class Input : MonoBehaviour
         ChangeSpell = _changeSpell.WasPressedThisFrame();
 
         MenuSubmit = _submit.WasPressedThisFrame();
+        MenuSubmitHeld = _submit.IsPressed();
         MenuCancel = _cancel.WasPressedThisFrame();
     }
 

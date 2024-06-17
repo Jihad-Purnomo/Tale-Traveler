@@ -1620,6 +1620,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdb6a8d987e586746a1d3364d38aec3e, type: 3}
+--- !u!1 &332501357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 332501358}
+  m_Layer: 0
+  m_Name: DialogueTriggers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &332501358
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332501357}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7, y: -3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1934416764}
+  - {fileID: 1061706261}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &333504337
 GameObject:
   m_ObjectHideFlags: 0
@@ -5143,6 +5176,120 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048369709}
   m_CullTransparentMesh: 1
+--- !u!1001 &1061706260
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 332501358}
+    m_Modifications:
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[0].Line
+      value: Press X to drag objects
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[0].Name
+      value: Sarasvati
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[1].Line
+      value: Use arrow keys to move and C to jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[1].Name
+      value: Sarasvati
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[0].Line
+      value: The darkness is corrupting the stories...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[0].Name
+      value: Sarasvati
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[1].Line
+      value: I need to find the soure...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[1].Name
+      value: Sarasvati
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[0].LeftSide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[1].LeftSide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837077651397071591, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_Name
+      value: DialogueTrigger (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837077651397071591, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+--- !u!4 &1061706261 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+  m_PrefabInstance: {fileID: 1061706260}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1068731229
 GameObject:
   m_ObjectHideFlags: 0
@@ -14112,8 +14259,9 @@ GameObject:
   - component: {fileID: 1851967367}
   - component: {fileID: 1851967366}
   - component: {fileID: 1851967368}
+  - component: {fileID: 1851967369}
   m_Layer: 3
-  m_Name: Ground (17)
+  m_Name: SpellGet
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14243,8 +14391,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99ce5d1e68363c47bf4c3ed15d992a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
-  range: 0.5
+  speed: 0.2
+  range: 0.2
+--- !u!114 &1851967369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851967364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ffe7851c89c503448f9747ec7e72d0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellType: 1
+  dialogue:
+    DialogueLines:
+    - Name: Sarasvati
+      Line: This is my telekinesis spell, it allows me to move objects from afar
+    - Name: Sarasvati
+      Line: Press Z to shoot the spell
 --- !u!1 &1863250349
 GameObject:
   m_ObjectHideFlags: 0
@@ -15017,6 +15184,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5990207438813013623, guid: 50fb9a83f287f324e8f7d519d3338cfc, type: 3}
   m_PrefabInstance: {fileID: 1202173816}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1934416764 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+  m_PrefabInstance: {fileID: 4057540205154188276}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1935435797
 GameObject:
@@ -16892,15 +17064,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 332501358}
     m_Modifications:
     - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16935,8 +17107,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: dialogues.DialogueLines.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[0].Line
+      value: I need to find the source of the darkness...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[0].Name
+      value: Sarasvati
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[1].Line
+      value: Use arrow keys to move and C to jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[1].Name
+      value: Sarasvati
       objectReference: {fileID: 0}
     - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: dialogues.DialogueLines.Array.data[0].Line
@@ -16968,7 +17160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4837077651397071591, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17223,6 +17415,6 @@ SceneRoots:
   - {fileID: 1936616963}
   - {fileID: 1733068854}
   - {fileID: 1658228467}
-  - {fileID: 4057540205154188276}
+  - {fileID: 332501358}
   - {fileID: 1876833861}
   - {fileID: 324203868}

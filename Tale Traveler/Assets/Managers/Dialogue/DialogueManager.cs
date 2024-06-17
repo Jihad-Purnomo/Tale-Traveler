@@ -9,17 +9,18 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager Inst;
 
     public GameObject DialogueBubble;
-    public Image CharProfile;
-    public TextMeshProUGUI NameArea;
     public TextMeshProUGUI TextArea;
+    public TextMeshProUGUI NameArea;
 
-    private Vector3 CharProfilePos;
-    private Vector3 NameAreaPos;
-    private Vector3 TextAreaPos;
+    [Range(0.01f, 0.1f)] public float TextIntervalBase;
+    [Range(0.01f, 0.1f)] public float TextIntervalFaster;
 
-    [Range(0.01f, 0.1f)] public float TextSpeed;
+    private float TextInterval;
 
     private Queue<DialogueLine> lines;
+
+    private bool isTyping = false;
+    public bool inDialogue { get; private set; }
 
     private void Awake()
     {
@@ -28,21 +29,36 @@ public class DialogueManager : MonoBehaviour
             Inst = this;
         }
 
-        CharProfilePos = CharProfile.rectTransform.position;
-        NameAreaPos = NameArea.rectTransform.position;
-        TextAreaPos = TextArea.rectTransform.position;
+        lines = new Queue<DialogueLine>();
+
+        TextInterval = TextIntervalBase;
     }
 
     private void Update()
     {
-        if (Input.MenuSubmit)
+        if (isTyping)
         {
-            DisplayNextLine();
+            if (Input.MenuSubmitHeld)
+            {
+                TextInterval = TextIntervalFaster;
+            }
+            else
+            {
+                TextInterval = TextIntervalBase;
+            }
+        }
+        else
+        {
+            if (Input.MenuSubmit)
+            {
+                DisplayNextLine();
+            }
         }
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
+        inDialogue = true;
         DialogueBubble.SetActive(true);
         Input.ChangeActionMap("UI");
         lines.Clear();
@@ -65,49 +81,29 @@ public class DialogueManager : MonoBehaviour
 
         DialogueLine currentLine = lines.Dequeue();
 
-        if (currentLine.LeftSide)
-        {
-            SetLeftDialogue();
-        }
-        else
-        {
-            SetRightDialogue();
-        }
-
-        CharProfile.sprite = currentLine.Profile;
         NameArea.text = currentLine.Name;
 
         StopAllCoroutines();
         StartCoroutine(TypeLine(currentLine));
     }
 
-    public void SetLeftDialogue()
-    {
-        CharProfile.rectTransform.position = CharProfilePos;
-        TextArea.rectTransform.position = TextAreaPos;
-        NameArea.rectTransform.position = NameAreaPos;
-    }
-    
-    public void SetRightDialogue()
-    {
-        CharProfile.rectTransform.position = new Vector3(-CharProfilePos.x, CharProfilePos.y);
-        TextArea.rectTransform.position = new Vector3(-TextAreaPos.x, TextAreaPos.y);
-        NameArea.rectTransform.position = new Vector3(-NameAreaPos.x, NameAreaPos.y);
-    }
-
     IEnumerator TypeLine(DialogueLine currentLine)
     {
+        isTyping = true;
+
         TextArea.text = "";
         foreach(char letter in currentLine.Line.ToCharArray())
         {
             TextArea.text += letter;
-            yield return new WaitForSeconds(TextSpeed);
+            yield return new WaitForSeconds(TextInterval);
         }
+        isTyping = false;
     }
 
     public void EndDialogue()
     {
         Input.ChangeActionMap("Gameplay");
+        inDialogue = false;
         DialogueBubble.SetActive(false);
     }
 }
@@ -115,8 +111,6 @@ public class DialogueManager : MonoBehaviour
 [System.Serializable]
 public class DialogueLine
 {
-    public bool LeftSide;
-    public Sprite Profile;
     public string Name;
     [TextArea(3, 10)] public string Line;
 }
