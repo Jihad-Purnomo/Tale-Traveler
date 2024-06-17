@@ -144,6 +144,7 @@ public class Player : MonoBehaviour, IDataPersistence
 
             case PlayerState.Spellcasting:
                 Object.Rb.velocity = Vector2.zero;
+                anim.Play("PlayerSpellcasting");
 
                 if (Input.SpellReleased)
                 {
