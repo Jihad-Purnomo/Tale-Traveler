@@ -1651,6 +1651,8 @@ Transform:
   m_Children:
   - {fileID: 1934416764}
   - {fileID: 1061706261}
+  - {fileID: 1100789871}
+  - {fileID: 1625302082}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &333504337
@@ -5185,12 +5187,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 332501358}
     m_Modifications:
     - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.519119
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.62
+      value: 20.98
       objectReference: {fileID: 0}
     - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5234,11 +5240,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: dialogue.DialogueLines.Array.data[0].Line
-      value: Press X to drag objects
+      value: '[Use X to drag objects]'
       objectReference: {fileID: 0}
     - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: dialogue.DialogueLines.Array.data[0].Name
-      value: Sarasvati
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: dialogue.DialogueLines.Array.data[1].Line
@@ -5521,6 +5527,124 @@ CanvasRenderer:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2376456779223875223, guid: 9360f793b248df7428acc93e22c38836, type: 3}
   m_PrefabInstance: {fileID: 3737178638103930575}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1100789870
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 332501358}
+    m_Modifications:
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.6235936
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 64.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[0].Line
+      value: '*CRASH!!*'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[0].Name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[1].Line
+      value: Huh? What's that?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[1].Name
+      value: Sarasvati
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[0].Line
+      value: The darkness is corrupting the stories...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[0].Name
+      value: Sarasvati
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[1].Line
+      value: I need to find the soure...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[1].Name
+      value: Sarasvati
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[0].LeftSide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[1].LeftSide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837077651397071591, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_Name
+      value: DialogueTrigger (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837077651397071591, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+--- !u!4 &1100789871 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+  m_PrefabInstance: {fileID: 1100789870}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1115373398
 PrefabInstance:
@@ -13311,6 +13435,124 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613636790}
   m_CullTransparentMesh: 1
+--- !u!1001 &1625302081
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 332501358}
+    m_Modifications:
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.6235936
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 73.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[0].Line
+      value: What is this darkness?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[0].Name
+      value: Sarasvati
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[1].Line
+      value: Huh? What's that?
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[1].Name
+      value: Sarasvati
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[0].Line
+      value: The darkness is corrupting the stories...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[0].Name
+      value: Sarasvati
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[1].Line
+      value: I need to find the soure...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[1].Name
+      value: Sarasvati
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[0].LeftSide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogues.DialogueLines.Array.data[1].LeftSide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837077651397071591, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_Name
+      value: DialogueTrigger (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837077651397071591, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+--- !u!4 &1625302082 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4086866207041892560, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+  m_PrefabInstance: {fileID: 1625302081}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1648263227
 GameObject:
   m_ObjectHideFlags: 0
@@ -14409,9 +14651,11 @@ MonoBehaviour:
   dialogue:
     DialogueLines:
     - Name: Sarasvati
-      Line: This is my telekinesis spell, it allows me to move objects from afar
+      Line: This is my telekinesis spell
     - Name: Sarasvati
-      Line: Press Z to shoot the spell
+      Line: It allows me to move objects from afar
+    - Name: 
+      Line: '[Use Z to shoot spells]'
 --- !u!1 &1863250349
 GameObject:
   m_ObjectHideFlags: 0
@@ -17108,7 +17352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: dialogue.DialogueLines.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: dialogues.DialogueLines.Array.size
@@ -17116,7 +17360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: dialogue.DialogueLines.Array.data[0].Line
-      value: I need to find the source of the darkness...
+      value: It's time to reorganize the books
       objectReference: {fileID: 0}
     - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: dialogue.DialogueLines.Array.data[0].Name
@@ -17124,11 +17368,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: dialogue.DialogueLines.Array.data[1].Line
-      value: Use arrow keys to move and C to jump
+      value: I shold get my magic spell
       objectReference: {fileID: 0}
     - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: dialogue.DialogueLines.Array.data[1].Name
       value: Sarasvati
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[2].Line
+      value: Let's get going
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[2].Name
+      value: Sarasvati
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[3].Line
+      value: '[Use arrow keys to move and C to jump]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[3].Name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
+      propertyPath: dialogue.DialogueLines.Array.data[4].Line
+      value: '[Use'
       objectReference: {fileID: 0}
     - target: {fileID: 4127373617782097592, guid: 91f3d5abe001df648bb509164b0f436a, type: 3}
       propertyPath: dialogues.DialogueLines.Array.data[0].Line
