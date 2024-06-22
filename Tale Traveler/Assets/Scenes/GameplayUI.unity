@@ -425,8 +425,8 @@ MonoBehaviour:
   DialogueBubble: {fileID: 1848505641}
   TextArea: {fileID: 1690764351}
   NameArea: {fileID: 546221961}
-  TextIntervalBase: 0.1
-  TextIntervalFaster: 0.0354
+  TextIntervalBase: 0.0623
+  TextIntervalFaster: 0.017
 --- !u!114 &752659093
 MonoBehaviour:
   m_ObjectHideFlags: 0

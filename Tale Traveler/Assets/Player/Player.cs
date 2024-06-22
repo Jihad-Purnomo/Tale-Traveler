@@ -7,6 +7,7 @@ public class Player : MonoBehaviour, IDataPersistence
     private ObjectData Object;
     private Movement Movement;
     [SerializeField] private Spell Spell;
+    [SerializeField] private GameObject particle;
 
     private Animator anim;
 
@@ -144,6 +145,7 @@ public class Player : MonoBehaviour, IDataPersistence
             case PlayerState.Spellcasting:
                 Object.Rb.velocity = Vector2.zero;
                 anim.Play("PlayerSpellcasting");
+                particle.SetActive(true);
 
                 if (Input.SpellReleased)
                 {
@@ -153,6 +155,7 @@ public class Player : MonoBehaviour, IDataPersistence
                 if (gettingSpell && !DialogueManager.Inst.inDialogue)
                 {
                     gettingSpell = false;
+                    particle.SetActive(false);
                     currentState = PlayerState.Standby;
                 }
                 break;
@@ -219,6 +222,7 @@ public class Player : MonoBehaviour, IDataPersistence
 
         Spell.Camera.SetFollow(transform);
         currentState = PlayerState.Standby;
+        particle.SetActive(false);
     }
 
     public void Turn()

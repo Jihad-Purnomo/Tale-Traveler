@@ -30,6 +30,7 @@ public class Input : MonoBehaviour
     private InputAction _spell;
     private InputAction _changeSpell;
 
+    public static InputAction navigateAction { get; private set; }
     private InputAction _submit;
     private InputAction _cancel;
 
@@ -47,6 +48,7 @@ public class Input : MonoBehaviour
         _spell = PlayerInput.actions["Spell"];
         _changeSpell = PlayerInput.actions["ChangeSpell"];
 
+        navigateAction = PlayerInput.actions["Navigate"];
         _submit = PlayerInput.actions["Submit"];
         _cancel = PlayerInput.actions["Cancel"];
     }

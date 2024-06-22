@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,16 +14,32 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] private GameObject emptyButton;
     [SerializeField] private GameObject bookButton;
+    [SerializeField] private GameObject prologueButton;
+
+    [SerializeField] private GameObject controlImage;
+    [SerializeField] private GameObject creditImage;
 
     [SerializeField] private GameObject titleScreen;
     [SerializeField] private float fadeOutTime;
 
     private Image[] titleScreenImages;
+    private TextMeshProUGUI[] titleScreenText;
+
+    [SerializeField] private Image titleScreenConfirmButton;
+    [SerializeField] private Image titleScreenCancelButton;
+
+    [SerializeField] private Sprite gamepadConfirm;
+    [SerializeField] private Sprite gamepadCancel;
+
+    [SerializeField] private Sprite keyboardConfirm;
+    [SerializeField] private Sprite keyboardCancel;
 
     private Animator bookAnim;
 
     private GameObject currentSelected;
     private bool bookOpened = false;
+    private bool creditOpened = false;
+    private bool controlOpened = false;
     private bool inTitleScreen = true;
 
     private void Awake()
@@ -35,6 +52,7 @@ public class MainMenu : MonoBehaviour
         Input.ChangeActionMap("UI");
 
         titleScreenImages = titleScreen.GetComponentsInChildren<Image>();
+        titleScreenText = titleScreen.GetComponentsInChildren<TextMeshProUGUI>();
 
         Input.SelectUI(emptyButton);
         currentSelected = emptyButton;
@@ -45,6 +63,17 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
+        if (Input.PlayerInput.currentControlScheme == "Gamepad")
+        {
+            titleScreenConfirmButton.sprite = gamepadConfirm;
+            titleScreenCancelButton.sprite = gamepadCancel;
+        }
+        else
+        {
+            titleScreenConfirmButton.sprite = keyboardConfirm;
+            titleScreenCancelButton.sprite = keyboardCancel;
+        }
+
         if (inTitleScreen)
         {
             if (Input.MenuSubmit)
@@ -58,7 +87,7 @@ public class MainMenu : MonoBehaviour
             }
         }
         
-        if (!inTitleScreen && !bookOpened && Input.MenuCancel)
+        if (!inTitleScreen && !bookOpened && !creditOpened && !controlOpened && Input.MenuCancel)
         {
             StartCoroutine(AppearTitleScreen());
         }
@@ -70,17 +99,19 @@ public class MainMenu : MonoBehaviour
             currentSelected.transform.GetChild(0).gameObject.SetActive(true);
         }
 
-        if (bookOpened)
+        if (bookOpened && Input.MenuCancel)
         {
-            if (Input.MenuCancel)
-            { 
-                StartCoroutine(CloseBook());
-            }
+            StartCoroutine(CloseBook());
+        }
 
-            if (Input.MenuSubmit)
-            {
-                BeginStory();
-            }
+        if (controlOpened && Input.MenuCancel)
+        {
+            CloseControl();
+        }
+
+        if (creditOpened && Input.MenuCancel)
+        {
+            CloseCredit();
         }
     }
 
@@ -90,6 +121,11 @@ public class MainMenu : MonoBehaviour
         {
             titleScreenImages[i].CrossFadeAlpha(0f, fadeOutTime, true);
         }
+        for (int i = 0; i < titleScreenText.Length; i++)
+        {
+            titleScreenText[i].CrossFadeAlpha(0f, fadeOutTime, true);
+        }
+
         yield return new WaitForSeconds(fadeOutTime);
         inTitleScreen = false;
         Input.SelectUI(bookButton);
@@ -100,6 +136,10 @@ public class MainMenu : MonoBehaviour
         for (int i = 0; i < titleScreenImages.Length; i++)
         {
             titleScreenImages[i].CrossFadeAlpha(1f, fadeOutTime, true);
+        }
+        for (int i = 0; i < titleScreenText.Length; i++)
+        {
+            titleScreenText[i].CrossFadeAlpha(1f, fadeOutTime, true);
         }
         yield return new WaitForSeconds(fadeOutTime);
         inTitleScreen = true;
@@ -112,7 +152,7 @@ public class MainMenu : MonoBehaviour
         bookAnim.Play("BookOpen");
         yield return new WaitForSeconds(1); 
         bookOpened = true;
-        Input.SelectUI(emptyButton);
+        Input.SelectUI(prologueButton);
     }
 
     IEnumerator CloseBook()
@@ -127,6 +167,34 @@ public class MainMenu : MonoBehaviour
     public void ActivateBook()
     {
         StartCoroutine(OpenBook());
+    }
+
+    public void OpenControl()
+    {
+        controlOpened = true;
+        Input.DisableAction(Input.navigateAction);
+        controlImage.SetActive(true);
+    }
+
+    public void CloseControl()
+    {
+        controlOpened = false;
+        Input.EnableAction(Input.navigateAction);
+        controlImage.SetActive(false);
+    }
+
+    public void OpenCredit()
+    {
+        creditOpened = true;
+        Input.DisableAction(Input.navigateAction);
+        creditImage.SetActive(true);
+    }
+
+    public void CloseCredit()
+    {
+        creditOpened = false;
+        Input.EnableAction(Input.navigateAction);
+        creditImage.SetActive(false);
     }
 
     public void BeginStory()

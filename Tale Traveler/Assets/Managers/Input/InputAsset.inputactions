@@ -365,10 +365,10 @@
                 {
                     "name": "",
                     "id": "a619f4b8-25f0-4620-ab58-a3c3d3005626",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard",
                     "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false

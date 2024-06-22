@@ -21,8 +21,7 @@ public class GetSpellTrigger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            coll.enabled = false;
-            sprite.enabled = false;
+            gameObject.SetActive(false);
 
             collision.GetComponent<Player>().GetSpell(spellType);
 
